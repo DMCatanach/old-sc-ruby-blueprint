@@ -18,7 +18,10 @@ auth_token = "e579f58801c314b4d58986409babda53"
 #and that worked! yay! 
 #we'll want to modify that later, because...
 #the next thing is making the magic 8 part 
-#step 1 - accept a question, which means (texted?) user input. 
+#step 1 - accept a question, which means user input, for now, via the terminal.
+#but wouldn't it be cool if you could text it in? don't know how to do that yet, though
+puts "What is your yes-or-no question?"
+input = gets.chomp  
 
 #step 2 - select a random answer from list of possible answers, so, random number generator and a loop thing 
 #with this setup, answer shows in terminal, random number texted to phone 
@@ -67,6 +70,7 @@ case (answer)
 	end
 
 #step 3 - text the answer, which will use the message coding above, with answer variable interpolated in body string 
+#actually, no, need to find a different way to generate body message, because this is sending the number, not the associated answer
 message = @client.account.messages.create(
 	:from => "+15053124689",
 	:to => "+15055043212", 
