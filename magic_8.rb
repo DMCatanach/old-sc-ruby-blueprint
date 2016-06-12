@@ -6,22 +6,16 @@ auth_token = "e579f58801c314b4d58986409babda53"
 
 @client = Twilio::REST::Client.new(account_sid, auth_token)
 
-#now that we're set up, we'll send ourself a message 
-#message = @client.account.messages.create(
-#	:from => "+15053124689",
-#	:to => "+15055043212", 
-#	:body => "Hello, this is your unstuck-in-time self."
-#	)
-
-#puts message.to
 
 #step 1 - accept a question, which means user input, for now, via the terminal.
 #but wouldn't it be cool if you could text it in? don't know how to do that yet, though
+#check Twilio documentation for anything that may help make that happen https://www.twilio.com/docs/api
 puts "What is your yes-or-no question?"
 input = gets.chomp  
 
-#step 2 - select a random answer from list of possible answers, so, random number generator and a loop thing 
-#with this setup, answer shows in terminal, random number texted to phone 
+#step 2 - select a random answer from list of possible answers
+#could probably refactor this to use an array instead; would have to figure out how to use random number generator with it
+
 number = rand(20)
 case (number)
 	when 0
@@ -66,8 +60,7 @@ case (number)
 		answer = "Very doubtful."
 	end
 
-#step 3 - text the answer, which will use the message coding above, with answer variable interpolated in body string 
-#actually, no, need to find a different way to generate body message, because this is sending the number, not the associated answer
+#step 3 - text the answer
 message = @client.account.messages.create(
 	:from => "+15053124689",
 	:to => "+15055043212", 
