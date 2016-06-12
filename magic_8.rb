@@ -15,9 +15,6 @@ auth_token = "e579f58801c314b4d58986409babda53"
 
 #puts message.to
 
-#and that worked! yay! 
-#we'll want to modify that later, because...
-#the next thing is making the magic 8 part 
 #step 1 - accept a question, which means user input, for now, via the terminal.
 #but wouldn't it be cool if you could text it in? don't know how to do that yet, though
 puts "What is your yes-or-no question?"
@@ -25,48 +22,48 @@ input = gets.chomp
 
 #step 2 - select a random answer from list of possible answers, so, random number generator and a loop thing 
 #with this setup, answer shows in terminal, random number texted to phone 
-answer = rand(20)
-case (answer)
+number = rand(20)
+case (number)
 	when 0
-		puts "It is certain."
+		answer = "It is certain."
 	when 1 
-		puts "It is decidedly so."
+		answer = "It is decidedly so."
 	when 2 
-		puts "Without a doubt."
+		answer = "Without a doubt."
 	when 3 
-		puts "Yes, definitely."
+		answer = "Yes, definitely."
 	when 4 
-		puts "You may rely on it."
+		answer = "You may rely on it."
 	when 5 
-		puts "As I see it, yes."
+		answer = "As I see it, yes."
 	when 6 
-		puts "Most likely."
+		answer = "Most likely."
 	when 7 
-		puts "Outlook good."
+		answer = "Outlook good."
 	when 8 
-		puts "Yes."
+		answer = "Yes."
 	when 9
-		puts "Signs point to yes."
+		answer = "Signs point to yes."
 	when 10 
-		puts "Reply hazy; try again."
+		answer = "Reply hazy; try again."
 	when 11 
-		puts "Ask again later."
+		answer = "Ask again later."
 	when 12 
-		puts "Better not tell you now."
+		answer = "Better not tell you now."
 	when 13 
-		puts "Cannot predict now."
+		answer = "Cannot predict now."
 	when 14 
-		puts "Concentrate and ask again."
+		answer = "Concentrate and ask again."
 	when 15 
-		puts "Don't count on it."
+		answer = "Don't count on it."
 	when 16 
-		puts "My reply is no."
+		answer = "My reply is no."
 	when 17 
-		puts "My sources say no."
+		answer = "My sources say no."
 	when 18 
-		puts "Outlook no so good."
+		answer = "Outlook no so good."
 	when 19 
-		puts "Very doubtful."
+		answer = "Very doubtful."
 	end
 
 #step 3 - text the answer, which will use the message coding above, with answer variable interpolated in body string 
@@ -76,4 +73,5 @@ message = @client.account.messages.create(
 	:to => "+15055043212", 
 	:body => "#{answer}"
 	)
+puts answer
 puts message.to
