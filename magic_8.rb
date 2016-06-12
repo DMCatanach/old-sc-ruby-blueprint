@@ -9,7 +9,7 @@ auth_token = "e579f58801c314b4d58986409babda53"
 
 #step 1 - accept a question, which means user input, for now, via the terminal.
 #but wouldn't it be cool if you could text it in? don't know how to do that yet, though
-#check Twilio documentation for anything that may help make that happen https://www.twilio.com/docs/api
+#check Twilio documentation for anything that may help make that happen https://www.twilio.com/docs/api or https://github.com/twilio/twilio-ruby/wiki/REST
 puts "What is your yes-or-no question?"
 input = gets.chomp  
 
