@@ -1,19 +1,9 @@
-require 'sinatra' 
-
-<<<<<<< HEAD
-get '/' do 
-	"Hello World!"
-end
-=======
-#def get_birthdate
-#	print "When is your birthday(format: MMDDYYYY)?"
-#	birthday = gets.chop
-#end
+require 'sinatra'
 
 def determine_path_number(birthdate)
 	path_num = birthdate[0].to_i + birthdate[1].to_i + birthdate[2].to_i + birthdate[3].to_i + birthdate[4].to_i  + birthdate[5].to_i + birthdate[6].to_i + birthdate[7].to_i
 	if (path_num > 9)
-		path_num = path_num.to_s  
+		path_num = path_num.to_s 
 		path_num = path_num[0].to_i + path_num[1].to_i  
 		if (path_num > 9) 
 			path_num = path_num.to_s
@@ -21,13 +11,14 @@ def determine_path_number(birthdate)
 		end
 	end
 	return path_num
+end
 
 def path_message(path_num)
 	case (path_num)
 		when 1
 			message = "One is the leader. The number one indicates the ability to stand alone, and is a strong vibration. Ruled by the Sun."
 		when 2
-			message = "This is the mediatore and peace-lover. The number two indicates the desire for harmony. It is a gentle, considerate, and sensitive vibration. Ruled by the Moon."
+			message = "This is the mediator and peace-lover. The number two indicates the desire for harmony. It is a gentle, considerate, and sensitive vibration. Ruled by the Moon."
 		when 3
 			message = "Number Three is a sociable, friendly, and outgoing vibration. Kind, positive, and optimistic, Threes enjoy life and have a good sense of humor. Ruled by Jupiter."
 		when 4
@@ -49,19 +40,18 @@ def path_message(path_num)
 end
 
 def get_your_path_number
-	your_number = determine_path_number
+	your_number = determine_path_number(get_birthdate)
 	your_message = path_message(your_number)
 	puts "Your number is #{your_number}. #{your_message}"
 end
 
-#get_your_path_number
-
 get '/' do 
-	"Hello World!"
+	"Hello world!"
 end
-
+ 
 get '/:birthdate' do 
-	birthdate = params[:birthdate]
-	"#{birthdate}"
+	birthdate = params['birthdate']
+	path_num = determine_path_number(birthdate)
+	message = path_message(path_num)
+	"#{message}"
 end
->>>>>>> 0968e64e82e61369411673e11d152f566e08d4d7

@@ -22,7 +22,7 @@ def path_message(path_num)
 		when 1
 			message = "One is the leader. The number one indicates the ability to stand alone, and is a strong vibration. Ruled by the Sun."
 		when 2
-			message = "This is the mediatore and peace-lover. The number two indicates the desire for harmony. It is a gentle, considerate, and sensitive vibration. Ruled by the Moon."
+			message = "This is the mediator and peace-lover. The number two indicates the desire for harmony. It is a gentle, considerate, and sensitive vibration. Ruled by the Moon."
 		when 3
 			message = "Number Three is a sociable, friendly, and outgoing vibration. Kind, positive, and optimistic, Threes enjoy life and have a good sense of humor. Ruled by Jupiter."
 		when 4
@@ -51,11 +51,14 @@ end
 
 #get_your_path_number
 
+#these routes are not working and I have no idea why. But they work in the FUCKING IDENTICAL SCRIPT in index.rb. *shrug* 
+#so I'm giving up on this file and working with index.rb, which is what the file needs to be called for rspec tests anyway
 get '/' do 
-	"Hello World!"
+	"Hello world!"
 end
 
-get '/:birthdate' do 
-	birthdate = params[:birthdate]
+get '/:birthdate' do
+	birthdate = params['birthdate']
 	"#{birthdate}"
 end
+
