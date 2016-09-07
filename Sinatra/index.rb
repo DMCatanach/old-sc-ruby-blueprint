@@ -45,6 +45,37 @@ def get_your_path_number
 	puts "Your number is #{your_number}. #{your_message}"
 end
 
+def setup_index_view
+	birthdate = params['birthdate']
+	path_num = determine_path_number(birthdate)
+	@message = path_message(path_num)
+	erb :index
+end
+
+get '/' do 
+	erb :form
+end
+
+get '/:birthdate' do 
+	setup_index_view
+end
+
+get '/message/:path_num' do  
+	path_num = params[:path_num].to_i
+	@message = path_message(path_num) 
+	erb :index 
+end 
+
+post '/' do 
+	birthdate = params[:birthdate].gsub("-","")
+	path_num = determine_path_number(birthdate) 
+	redirect "/message/#{path_num}" 
+end
+
+post '/' do 
+	"#{params}"
+end
+
 get '/' do 
 	"Hello world!"
 end
@@ -53,11 +84,8 @@ get '/newpage' do
 	erb :newpage
 end  
 
-get '/:birthdate' do 
-	birthdate = params['birthdate']
-	path_num = determine_path_number(birthdate)
-	@message = path_message(path_num)
-	erb :index
-end
+
+
+
 
 
